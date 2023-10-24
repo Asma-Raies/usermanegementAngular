@@ -1,0 +1,1 @@
+export const apiURL: string = 'http://localhost:8980/MakeUp/api';
