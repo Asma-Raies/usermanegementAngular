@@ -1,0 +1,39 @@
+<body>
+
+
+    <div class="container">
+        <div class="card shadow mb-4  bg-light">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>reference</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>quantite</th>
+                         <th>Marque</th>
+                         <th>Image</th>
+                    </tr>
+                    <tbody *ngFor="let makeUp of MakeUp">
+                        <tr>
+                            <td>{{makeUp.referenceMakeUp}}</td>
+                            <td>{{makeUp.nomMakeUp}}</td>
+                            <td>{{makeUp.prixMakeUp}}</td>
+                            <td>{{makeUp.quantite}}</td>
+                            <td>{{makeUp.marque?.nomMarq}}</td> 
+                            <td><img class="card-img-top img-responsive"
+                                src = "{{makeUp.imageStr}}"
+                                style = "height :50px;width:100px">
+                                </td>
+                                
+                            <td><a *ngIf="authService.isAdmin()"
+                                class="btn btn-danger" (click)="supprimerMakeUp(makeUp)">Supprimer</a></td>
+                                <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateMakeUp',makeUp.referenceMakeUp]">Modifier</a></td>
+                           
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

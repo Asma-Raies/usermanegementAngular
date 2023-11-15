@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="col-sm-4 col-lg-4 mb-4">
+        <label>Marque</label>
+        <select class="form-control form-control-lg" idMarq="idMarq" [(ngModel)]="idMarq" (change)="OnChange()">
+            <option *ngFor="let marq of marque" value="{{marq.idMarq}}">
+                {{marq.nomMarq}}
+            </option>
+        </select>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>reference</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>quantite</th>
+                         <th>Marque</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let makeUp of makeup">
+                    <tr>
+                        <td>{{makeUp.referenceMakeUp}}</td>
+                        <td>{{makeUp.nomMakeUp}}</td>
+                        <td>{{makeUp.prixMakeUp}}</td>
+                        <td>{{makeUp.quantite}}</td>
+                         <td>{{makeUp.marque.nomMarq}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerMakeUp(makeUp)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateMakeUp',makeUp.referenceMakeUp]">Modifier</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 

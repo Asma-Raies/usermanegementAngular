@@ -1,0 +1,72 @@
+<div class="container p-5 my-5 bg-light  card hadow-lg p-3 mb-5  rounded ">
+    <div>
+        <h2 classe="justify-content-center">Modifier Un Produit makeUp:</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>reference MakeUp</label>
+            <input type="text" [(ngModel)]="currentProduit.referenceMakeUp" name="referenceMakeUp" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom MakeUp</label>
+            <input type="text" [(ngModel)]="currentProduit.nomMakeUp" name="nomMakeUp" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix make-up</label>
+            <input type="number" [(ngModel)]="currentProduit.prixMakeUp" name="prixMakeUp" class="form-control">
+        </div>
+       
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>quantite make-up</label>
+            <input type="number" [(ngModel)]="currentProduit.quantite" name="quantite" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Marque</label>
+            <select class="form-control form-control-lg" id="idMarq" name="idMarq"
+            [(ngModel)]="updatedMarqId">
+            <option *ngFor="let marq of marques" [value]="marq.idMarq" >
+            
+            {{marq.nomMarq}}
+            
+            </option>
+            </select>
+            </div> 
+            <div class="mt-2">
+                <button type="submit" (click)="onAddImageProduit()" class="btn 
+                btn-success">Ajouter Image</button>
+                </div>
+                
+            <div class="col-sm-16 col-md-16 col-lg-16">
+                <label class="mb-2">Image :</label>
+                <input type="file" (change)="onImageUpload($event)" class="form-control">
+                </div>
+            <div class="col-sm-16 col-md-16 col-lg-16">
+               
+
+                <img [src]="myImage" class="card-img-top img-fluid rounded-start"   style="width: 500px; height: 300px" />
+                </div>
+                <div class="card shadow mb-4">
+                <div class="card-body">
+                <table class="table table-striped">
+                <thead>
+                <tr> <th>Images</th> </tr>
+                </thead><tbody *ngFor="let img of currentProduit.images">
+                    <tr>
+                    <td><img class="card-img-top img-responsive"
+                    src = "{{'data:' + img.type + ';base64,' + img.image}}"
+                    style = "height :50px;width:100px"></td>
+                    <td style="width:20%" ><a class="btn btn-danger"
+                        (click)="supprimerImage(img)">Supprimer</a></td>
+                        
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+               </div>
+        <div class="mt-2">
+            <button type="submit" (click)="updateMakeUp()" class="btn btn-success btn-lg">Modifier</button>
+        </div>
+
+    </form>
+
+</div>
